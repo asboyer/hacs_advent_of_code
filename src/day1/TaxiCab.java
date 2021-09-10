@@ -1,5 +1,6 @@
 package day1;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ public class TaxiCab {
         int facing = 0;
         int x = 0;
         int y = 0;
-        ArrayList[][] table = new ArrayList;
+        ArrayList<Point> coors = new ArrayList();
         // try and catch
         try {
             Scanner reader = new Scanner(new File("src/day1/input.txt"));
@@ -22,11 +23,15 @@ public class TaxiCab {
                 int steps = Integer.parseInt(step.substring(1));
                 if(dir.equals("R")) facing++;
                 else facing+= 3;
-                if(facing % 4 == NORTH) y+= steps;
-                if(facing % 4 == EAST) x+= steps;
-                if(facing % 4 == SOUTH) y-= steps;
-                if(facing % 4 == WEST) x-= steps;
-
+                for (int i = 0; i < steps; i++) {
+                    if(facing % 4 == NORTH) y++;
+                    if(facing % 4 == EAST) x++;
+                    if(facing % 4 == SOUTH) y--;
+                    if(facing % 4 == WEST) x--;
+                    Point p = new Point(x, y);
+                    if(coors.contains(p)) { System.out.println(p); break; }
+                    coors.add(p);
+                }
             }
         }catch(Exception e){e.printStackTrace();}
         System.out.println(Math.abs(x) + Math.abs(y));
