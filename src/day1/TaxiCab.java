@@ -13,6 +13,7 @@ public class TaxiCab {
         int facing = 0;
         int x = 0;
         int y = 0;
+        boolean going = true;
         ArrayList<Point> coors = new ArrayList();
         // try and catch
         try {
@@ -29,11 +30,12 @@ public class TaxiCab {
                     if(facing % 4 == SOUTH) y--;
                     if(facing % 4 == WEST) x--;
                     Point p = new Point(x, y);
-                    if(coors.contains(p)) { System.out.println(p); break; }
+                    if(coors.contains(p) && going) { System.out.print("Answer to part 2: "); System.out.println(Math.abs(x) + Math.abs(y)); going = false;}
                     coors.add(p);
                 }
             }
         }catch(Exception e){e.printStackTrace();}
+        System.out.print("Answer to part 1: ");
         System.out.println(Math.abs(x) + Math.abs(y));
     }
 }
