@@ -29,7 +29,6 @@ public class KeyPad2 {
                     else if((dir == 'R') && (c + 1 <= 4) && (arr2[r][c + 1] != 0)) c ++;
                     else if((dir == 'U') && (r - 1 >= 0) &&(arr2[r - 1][c] != 0)) r --;
                     else if((dir == 'D') && (r + 1 <= 4) && (arr2[r + 1][c] != 0)) r ++;
-                    System.out.println(r + ", " + c);
                 }
                 code[num] = arr2[r][c];
                 num++;
